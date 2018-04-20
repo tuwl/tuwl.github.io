@@ -154,7 +154,7 @@ links_layout: block
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
-avatar: http://oqerv9kdt.bkt.clouddn.com/image/png/ironman.png?imageView2/0/q/75|imageslim
+avatar: https://oqerv9kdt.bkt.clouddn.com/image/png/ironman.png?imageView2/0/q/75|imageslim
 
 # Table Of Contents in the Sidebar
 toc:
