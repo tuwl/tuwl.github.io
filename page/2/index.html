@@ -80,13 +80,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="All categories">
-<meta property="og:url" content="https://blog.tuweiliang.com/categories/index.html">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="https://blog.tuweiliang.com/page/2/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-22T06:28:01.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="All categories">
+<meta name="twitter:title" content="Blog">
 
 
 
@@ -116,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="https://blog.tuweiliang.com/categories/"/>
+  <link rel="canonical" href="https://blog.tuweiliang.com/page/2/"/>
 
 
 
 
 
-  <title>All categories | Blog</title>
+  <title>Blog</title>
   
 
 
@@ -141,7 +140,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,44 +234,169 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <div id="posts" class="posts-expand">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.tuweiliang.com/2018/03/21/DenyHosts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="twl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oqerv9kdt.bkt.clouddn.com/image/png/ironman.png?imageView2/0/q/75|imageslim">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
     
-    
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">All categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 2 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/keep-learning/">keep learning</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">1</span></li></ul>
-            </div>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/21/DenyHosts/" itemprop="url">关于使用DenyHosts阻止SSH暴力破解密码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T20:11:49+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/keep-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">keep learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="查看用户登录历史"><a href="#查看用户登录历史" class="headerlink" title="查看用户登录历史"></a>查看用户登录历史</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  /var/run/utmp（用于记录当前打开的会话）被who和w工具用来记录当前有谁登录以及他们正在做什么，</span><br><span class="line">而uptime用来记录系统启动时间。</span><br><span class="line">  /var/<span class="built_in">log</span>/wtmp （用于存储系统连接历史记录）被last工具用来记录最后登录的用户的列表。</span><br><span class="line">  /var/<span class="built_in">log</span>/btmp（记录失败的登录尝试）被lastb工具用来记录最后失败的登录尝试的列表。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>utmpdump，这个小程序来自sysvinit-tools包，可以用于转储二进制日志文件到文本格式的文件以便检查。此工具默认在CentOS 6和7系列上可用。utmpdump收集到的信息比先前提到过的工具的输出要更全面，这让它成为一个胜任该工作的很不错的工具。除此之外，utmpdump可以用于修改utmp或wtmp。如果你想要修复二进制日志中的任何损坏条目，它会很有用。</p>
+</blockquote>
+<p> 显示失败的登录尝试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">utmpdump /var/<span class="built_in">log</span>/btmp</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装DenyHosts"><a href="#安装DenyHosts" class="headerlink" title="安装DenyHosts"></a>安装DenyHosts</h2><blockquote>
+<p>DenyHosts是Python语言写的一个程序，它会分析sshd的日志文件（/var/log/secure），当发现重 复的攻击时就会记录IP到/etc/hosts.deny文件，从而达到自动屏IP的功能。<br>用DenyHosts可以阻止试图猜测SSH登录口令，它会分析/var/log/secure等日志文件，当发现同一IP在进行多次SSH密码尝试时就会记录IP到/etc/hosts.deny文件，从而达到自动屏蔽该IP的目的。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Debian/Ubuntu： </span></span><br><span class="line">$ sudo apt-get install denyhosts </span><br><span class="line"><span class="comment"># RedHat/CentOS </span></span><br><span class="line">$ yum install denyhosts </span><br><span class="line"><span class="comment"># Archlinux </span></span><br><span class="line">$ yaourt denyhosts </span><br><span class="line"><span class="comment"># Gentoo </span></span><br><span class="line">$ emerge -av denyhosts</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/21/DenyHosts/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
           </div>
+          <!--/noindex-->
         
-      </div>
-      
-      
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -279,10 +404,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -508,10 +629,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

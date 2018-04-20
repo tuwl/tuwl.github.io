@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linux,Python,VPS,安全," />
+  <meta name="keywords" content="HTTP," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="查看用户登录历史1234  /var/run/utmp（用于记录当前打开的会话）被who和w工具用来记录当前有谁登录以及他们正在做什么，而uptime用来记录系统启动时间。  /var/log/wtmp （用于存储系统连接历史记录）被last工具用来记录最后登录的用户的列表。  /var/log/btmp（记录失败的登录尝试）被lastb工具用来记录最后失败的登录尝试的列表。  utmpdump，">
-<meta name="keywords" content="Linux,Python,VPS,安全">
+<meta name="description" content="问题描述浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。 一个源的定义同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在">
+<meta name="keywords" content="HTTP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于使用DenyHosts阻止SSH暴力破解密码">
-<meta property="og:url" content="https://blog.tuweiliang.com/2018/03/21/DenyHosts/index.html">
+<meta property="og:title" content="HTTP CORS Request method OPTIONS">
+<meta property="og:url" content="https://blog.tuweiliang.com/2018/04/20/HTTP-CORS-Request-method-OPTIONS/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="查看用户登录历史1234  /var/run/utmp（用于记录当前打开的会话）被who和w工具用来记录当前有谁登录以及他们正在做什么，而uptime用来记录系统启动时间。  /var/log/wtmp （用于存储系统连接历史记录）被last工具用来记录最后登录的用户的列表。  /var/log/btmp（记录失败的登录尝试）被lastb工具用来记录最后失败的登录尝试的列表。  utmpdump，">
+<meta property="og:description" content="问题描述浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。 一个源的定义同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-22T07:05:32.488Z">
+<meta property="og:updated_time" content="2018-04-20T06:18:30.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于使用DenyHosts阻止SSH暴力破解密码">
-<meta name="twitter:description" content="查看用户登录历史1234  /var/run/utmp（用于记录当前打开的会话）被who和w工具用来记录当前有谁登录以及他们正在做什么，而uptime用来记录系统启动时间。  /var/log/wtmp （用于存储系统连接历史记录）被last工具用来记录最后登录的用户的列表。  /var/log/btmp（记录失败的登录尝试）被lastb工具用来记录最后失败的登录尝试的列表。  utmpdump，">
+<meta name="twitter:title" content="HTTP CORS Request method OPTIONS">
+<meta name="twitter:description" content="问题描述浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。 一个源的定义同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://blog.tuweiliang.com/2018/03/21/DenyHosts/"/>
+  <link rel="canonical" href="https://blog.tuweiliang.com/2018/04/20/HTTP-CORS-Request-method-OPTIONS/"/>
 
 
 
 
 
-  <title>关于使用DenyHosts阻止SSH暴力破解密码 | Blog</title>
+  <title>HTTP CORS Request method OPTIONS | Blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.tuweiliang.com/2018/03/21/DenyHosts/">
+    <link itemprop="mainEntityOfPage" href="https://blog.tuweiliang.com/2018/04/20/HTTP-CORS-Request-method-OPTIONS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="twl">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于使用DenyHosts阻止SSH暴力破解密码</h1>
+          <h1 class="post-title" itemprop="name headline">HTTP CORS Request method OPTIONS</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T20:11:49+08:00">
-                2018-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T11:02:46+08:00">
+                2018-04-20
               </time>
             
 
@@ -342,20 +342,70 @@
       
 
       
-        <h2 id="查看用户登录历史"><a href="#查看用户登录历史" class="headerlink" title="查看用户登录历史"></a>查看用户登录历史</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  /var/run/utmp（用于记录当前打开的会话）被who和w工具用来记录当前有谁登录以及他们正在做什么，</span><br><span class="line">而uptime用来记录系统启动时间。</span><br><span class="line">  /var/<span class="built_in">log</span>/wtmp （用于存储系统连接历史记录）被last工具用来记录最后登录的用户的列表。</span><br><span class="line">  /var/<span class="built_in">log</span>/btmp（记录失败的登录尝试）被lastb工具用来记录最后失败的登录尝试的列表。</span><br></pre></td></tr></table></figure>
+        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。</p>
+<h1 id="一个源的定义"><a href="#一个源的定义" class="headerlink" title="一个源的定义"></a>一个源的定义</h1><p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。<br>一个源的定义<br>如果两个页面的协议，端口（如果有指定）和域名都相同，则两个页面具有相同的源。</p>
+<p>下表给出了相对<a href="http://store.company.com/dir/page.html" target="_blank" rel="noopener">http://store.company.com/dir/page.html</a> 同源检测的示例:</p>
+<pre><code>-------------------------------------------------------------------------------------
+| URL                                             | 结果  | 原因                    |
+-------------------------------------------------------------------------------------
+| http://store.company.com/dir2/other.html        | 成功  |                         |
+-------------------------------------------------------------------------------------
+| http://store.company.com/dir/inner/another.html | 成功  |                         |
+-------------------------------------------------------------------------------------
+| https://store.company.com/secure.html           | 失败  | 不同协议 ( https和http ) |
+-------------------------------------------------------------------------------------
+| http://store.company.com:81/dir/etc.html        | 失败  | 不同端口 ( 81和80)       |
+-------------------------------------------------------------------------------------
+| http://news.company.com/dir/other.html          | 失败  | 不同域名 ( news和store ) |
+-------------------------------------------------------------------------------------
+</code></pre><h1 id="跨源网络访问"><a href="#跨源网络访问" class="headerlink" title="跨源网络访问"></a>跨源网络访问</h1><p>同源策略控制了不同源之间的交互，例如在使用XMLHttpRequest 或 img 标签时则会受到同源策略的约束。这些交互通常分为三类：</p>
+<ul>
+<li>通常允许跨域写操作（Cross-origin writes）。例如链接（links），重定向以及表单提交。<strong> 特定少数的HTTP请求需要添加 preflight。</strong>（预检请求,即本文开头所提到的）</li>
+<li>通常允许跨域资源嵌入（Cross-origin embedding）。之后下面会举例说明。</li>
+<li>通常不允许跨域读操作（Cross-origin reads）。但常可以通过内嵌资源来巧妙的进行读取访问。例如可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或availability of an embedded resource.</li>
+</ul>
+<p>以下是可能嵌入跨源的资源的一些示例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"..."</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> 标签嵌入跨域脚本。语法错误信息只能在同源脚本中捕捉到。</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"..."</span>&gt;</span> 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的Content-Type 消息头。不同浏览器有不同的限制： IE, Firefox, Chrome, Safari (跳至CVE-2010-0051)部分 和 Opera。</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>&gt;</span>嵌入图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,...</span><br><span class="line"><span class="tag">&lt;<span class="name">video</span>&gt;</span> 和 <span class="tag">&lt;<span class="name">audio</span>&gt;</span>嵌入多媒体资源。</span><br><span class="line"><span class="tag">&lt;<span class="name">object</span>&gt;</span>, <span class="tag">&lt;<span class="name">embed</span>&gt;</span> 和 <span class="tag">&lt;<span class="name">applet</span>&gt;</span> 的插件。</span><br><span class="line">@font-face 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。</span><br><span class="line"><span class="tag">&lt;<span class="name">frame</span>&gt;</span> 和 <span class="tag">&lt;<span class="name">iframe</span>&gt;</span> 载入的任何资源。站点可以使用X-Frame-Options消息头来阻止这种形式的跨域交互。</span><br></pre></td></tr></table></figure></p>
+<h1 id="预检请求"><a href="#预检请求" class="headerlink" title="预检请求"></a>预检请求</h1><p>不同于一些简单的请求不会触发 CORS 预检请求，“需预检的请求”要求必须首先使用 OPTIONS   方法发起一个预检请求到服务器，以获知服务器是否允许该实际请求。”预检请求“的使用，可以避免跨域请求对服务器的用户数据产生未预期的影响。</p>
+<p>当请求满足下述任一条件时，即应首先发送预检请求：</p>
+<ul>
+<li>使用了下面任一 HTTP 方法：<ul>
+<li>PUT</li>
+<li>DELETE</li>
+<li>CONNECT</li>
+<li>OPTIONS</li>
+<li>TRACE</li>
+<li>PATCH</li>
+</ul>
+</li>
+<li>人为设置了对 CORS 安全的首部字段集合之外的其他首部字段。该集合为：<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Content-Type (but note the additional requirements below)</li>
+<li>DPR</li>
+<li>Downlink</li>
+<li>Save-Data</li>
+<li>Viewport-Width</li>
+<li>Width</li>
+</ul>
+</li>
+<li>Content-Type 的值不属于下列之一:<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>text/plain</li>
+</ul>
+</li>
+<li>请求中的XMLHttpRequestUpload 对象注册了任意多个事件监听器。</li>
+<li>请求中使用了ReadableStream对象。</li>
+</ul>
 <blockquote>
-<p>utmpdump，这个小程序来自sysvinit-tools包，可以用于转储二进制日志文件到文本格式的文件以便检查。此工具默认在CentOS 6和7系列上可用。utmpdump收集到的信息比先前提到过的工具的输出要更全面，这让它成为一个胜任该工作的很不错的工具。除此之外，utmpdump可以用于修改utmp或wtmp。如果你想要修复二进制日志中的任何损坏条目，它会很有用。</p>
+<p>注意: WebKit Nightly 和 Safari Technology Preview 为Accept, Accept-Language, 和 Content-Language 首部字段的值添加了额外的限制。如果这些首部字段的值是“非标准”的，WebKit/Safari 就不会将这些请求视为“简单请求”。WebKit/Safari 并没有在文档中列出哪些值是“非标准”的，不过我们可以在这里找到相关讨论：<a href="https://bugs.webkit.org/show_bug.cgi?id=165178" target="_blank" rel="noopener">Require preflight for non-standard CORS-safelisted request headers Accept, Accept-Language, and Content-Language</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=165566" target="_blank" rel="noopener">Allow commas in Accept, Accept-Language, and Content-Language request headers for simple CORS</a>, and <a href="https://bugs.webkit.org/show_bug.cgi?id=166363" target="_blank" rel="noopener">Switch to a blacklist model for restricted Accept headers in simple CORS requests</a>。其它浏览器并不支持这些额外的限制，因为它们不属于规范的一部分。</p>
 </blockquote>
-<p> 显示失败的登录尝试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">utmpdump /var/<span class="built_in">log</span>/btmp</span><br></pre></td></tr></table></figure></p>
-<h2 id="安装DenyHosts"><a href="#安装DenyHosts" class="headerlink" title="安装DenyHosts"></a>安装DenyHosts</h2><blockquote>
-<p>DenyHosts是Python语言写的一个程序，它会分析sshd的日志文件（/var/log/secure），当发现重 复的攻击时就会记录IP到/etc/hosts.deny文件，从而达到自动屏IP的功能。<br>用DenyHosts可以阻止试图猜测SSH登录口令，它会分析/var/log/secure等日志文件，当发现同一IP在进行多次SSH密码尝试时就会记录IP到/etc/hosts.deny文件，从而达到自动屏蔽该IP的目的。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Debian/Ubuntu： </span></span><br><span class="line">$ sudo apt-get install denyhosts </span><br><span class="line"><span class="comment"># RedHat/CentOS </span></span><br><span class="line">$ yum install denyhosts </span><br><span class="line"><span class="comment"># Archlinux </span></span><br><span class="line">$ yaourt denyhosts </span><br><span class="line"><span class="comment"># Gentoo </span></span><br><span class="line">$ emerge -av denyhosts</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service denyhosts start</span><br></pre></td></tr></table></figure>
-<p>默认配置 /etc/denyhosts.conf：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/denyhosts.conf </span><br><span class="line">	SECURE_LOG = /var/<span class="built_in">log</span>/auth.log <span class="comment">#ssh 日志文件，它是根据这个文件来判断的。 </span></span><br><span class="line">	HOSTS_DENY = /etc/hosts.deny <span class="comment">#控制用户登陆的文件 </span></span><br><span class="line">	PURGE_DENY = <span class="comment">#过多久后清除已经禁止的，空表示永远不解禁 </span></span><br><span class="line">	BLOCK_SERVICE = sshd <span class="comment">#禁止的服务名，如还要添加其他服务，只需添加逗号跟上相应的服务即可 </span></span><br><span class="line">	DENY_THRESHOLD_INVALID = 5 <span class="comment">#允许无效用户失败的次数 </span></span><br><span class="line">	DENY_THRESHOLD_VALID = 10 <span class="comment">#允许普通用户登陆失败的次数 </span></span><br><span class="line">	DENY_THRESHOLD_ROOT = 1 <span class="comment">#允许root登陆失败的次数 </span></span><br><span class="line">	DENY_THRESHOLD_RESTRICTED = 1 </span><br><span class="line">	WORK_DIR = /var/lib/denyhosts <span class="comment">#运行目录 </span></span><br><span class="line">	SUSPICIOUS_LOGIN_REPORT_ALLOWED_HOSTS=YES </span><br><span class="line">	HOSTNAME_LOOKUP=YES <span class="comment">#是否进行域名反解析 </span></span><br><span class="line">	LOCK_FILE = /var/run/denyhosts.pid <span class="comment">#程序的进程ID </span></span><br><span class="line">	ADMIN_EMAIL = root@localhost <span class="comment">#管理员邮件地址,它会给管理员发邮件 </span></span><br><span class="line">	SMTP_HOST = localhost </span><br><span class="line">	SMTP_PORT = 25 </span><br><span class="line">	SMTP_FROM = DenyHosts &lt;nobody@localhost&gt; </span><br><span class="line">	SMTP_SUBJECT = DenyHosts Report </span><br><span class="line">	AGE_RESET_VALID=5d <span class="comment">#用户的登录失败计数会在多久以后重置为0，(h表示小时，d表示天，m表示月，w表示周，y表示年) </span></span><br><span class="line">	AGE_RESET_ROOT=25d </span><br><span class="line">	AGE_RESET_RESTRICTED=25d </span><br><span class="line">	AGE_RESET_INVALID=10d </span><br><span class="line">	RESET_ON_SUCCESS = yes <span class="comment">#如果一个ip登陆成功后，失败的登陆计数是否重置为0 </span></span><br><span class="line">	DAEMON_LOG = /var/<span class="built_in">log</span>/denyhosts <span class="comment">#自己的日志文件 </span></span><br><span class="line">	DAEMON_SLEEP = 30s <span class="comment">#当以后台方式运行时，每读一次日志文件的时间间隔。 </span></span><br><span class="line">	DAEMON_PURGE = 1h <span class="comment">#当以后台方式运行时，清除机制在 HOSTS_DENY 中终止旧条目的时间间隔,这个会影响PURGE_DENY的间隔。</span></span><br></pre></td></tr></table></figure>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ul>
+<li>修改浏览器设置 <a href="https://github.com/zhongxia245/blog/issues/28" target="_blank" rel="noopener">https://github.com/zhongxia245/blog/issues/28</a></li>
+<li>NGINX转发请求</li>
+<li>修改AJAX请求content type为上面所允许的三个之一（未解决本文所涉及的问题）</li>
+</ul>
 
       
     </div>
@@ -373,13 +423,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/VPS/" rel="tag"># VPS</a>
-          
-            <a href="/tags/安全/" rel="tag"># 安全</a>
+            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
           
         </div>
       
@@ -392,15 +436,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/21/dateformat-with-multiple-threads/" rel="next" title="多线程下的 DateFormat">
+                <i class="fa fa-chevron-left"></i> 多线程下的 DateFormat
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/21/vue-bootstrap-datepicker-issue/" rel="prev" title="Vue.js中使用v-model无法取到bootstrap-datepicker的值">
-                Vue.js中使用v-model无法取到bootstrap-datepicker的值 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -536,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看用户登录历史"><span class="nav-number">1.</span> <span class="nav-text">查看用户登录历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装DenyHosts"><span class="nav-number">2.</span> <span class="nav-text">安装DenyHosts</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个源的定义"><span class="nav-number">2.</span> <span class="nav-text">一个源的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跨源网络访问"><span class="nav-number">3.</span> <span class="nav-text">跨源网络访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预检请求"><span class="nav-number">4.</span> <span class="nav-text">预检请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">5.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
             
 
           </div>
