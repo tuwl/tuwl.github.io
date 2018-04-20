@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="问题描述浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。 一个源的定义同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-20T06:18:30.312Z">
+<meta property="og:updated_time" content="2018-04-20T06:25:16.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP CORS Request method OPTIONS">
 <meta name="twitter:description" content="问题描述浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。 一个源的定义同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在">
@@ -358,7 +358,8 @@
 -------------------------------------------------------------------------------------
 | http://news.company.com/dir/other.html          | 失败  | 不同域名 ( news和store ) |
 -------------------------------------------------------------------------------------
-</code></pre><h1 id="跨源网络访问"><a href="#跨源网络访问" class="headerlink" title="跨源网络访问"></a>跨源网络访问</h1><p>同源策略控制了不同源之间的交互，例如在使用XMLHttpRequest 或 img 标签时则会受到同源策略的约束。这些交互通常分为三类：</p>
+</code></pre><a id="more"></a>
+<h1 id="跨源网络访问"><a href="#跨源网络访问" class="headerlink" title="跨源网络访问"></a>跨源网络访问</h1><p>同源策略控制了不同源之间的交互，例如在使用XMLHttpRequest 或 img 标签时则会受到同源策略的约束。这些交互通常分为三类：</p>
 <ul>
 <li>通常允许跨域写操作（Cross-origin writes）。例如链接（links），重定向以及表单提交。<strong> 特定少数的HTTP请求需要添加 preflight。</strong>（预检请求,即本文开头所提到的）</li>
 <li>通常允许跨域资源嵌入（Cross-origin embedding）。之后下面会举例说明。</li>
