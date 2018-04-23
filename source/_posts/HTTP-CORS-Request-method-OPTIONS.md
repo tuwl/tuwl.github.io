@@ -81,18 +81,11 @@ tags:
 
 >注意: WebKit Nightly 和 Safari Technology Preview 为Accept, Accept-Language, 和 Content-Language 首部字段的值添加了额外的限制。如果这些首部字段的值是“非标准”的，WebKit/Safari 就不会将这些请求视为“简单请求”。WebKit/Safari 并没有在文档中列出哪些值是“非标准”的，不过我们可以在这里找到相关讨论：[Require preflight for non-standard CORS-safelisted request headers Accept, Accept-Language, and Content-Language][1], [Allow commas in Accept, Accept-Language, and Content-Language request headers for simple CORS][2], and [Switch to a blacklist model for restricted Accept headers in simple CORS requests][3]。其它浏览器并不支持这些额外的限制，因为它们不属于规范的一部分。
 
+  [1]: https://bugs.webkit.org/show_bug.cgi?id=165178
+  [2]: https://bugs.webkit.org/show_bug.cgi?id=165566
+  [3]: https://bugs.webkit.org/show_bug.cgi?id=166363
+
 # 解决方法
 - 修改浏览器设置 https://github.com/zhongxia245/blog/issues/28
 - NGINX转发请求
 - 修改AJAX请求content type为上面所允许的三个之一（未解决本文所涉及的问题）
-
-# 参考文档
-
-- [浏览器的同源策略][4]
-- [HTTP访问控制（CORS）][5]
-
-  [1]: https://bugs.webkit.org/show_bug.cgi?id=165178
-  [2]: https://bugs.webkit.org/show_bug.cgi?id=165566
-  [3]: https://bugs.webkit.org/show_bug.cgi?id=166363
-  [4]: https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy 
-  [5]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS
