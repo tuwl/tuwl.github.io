@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="问题描述浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。 一个源的定义同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-20T06:25:16.066Z">
+<meta property="og:updated_time" content="2018-04-23T07:26:46.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP CORS Request method OPTIONS">
 <meta name="twitter:description" content="问题描述浏览器发出AJAX请求，后台服务端限制访问方式是POST，并通过判断content type是否为application/json作为参数类型校验，但是当加上content type之后request method变成了options,最后发现这是由于跨域（源）访问所发起的预检请求。 一个源的定义同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在">
@@ -407,6 +407,10 @@
 <li>NGINX转发请求</li>
 <li>修改AJAX请求content type为上面所允许的三个之一（未解决本文所涉及的问题）</li>
 </ul>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">浏览器的同源策略</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">HTTP访问控制（CORS）</a></li>
+</ul>
 
       
     </div>
@@ -581,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个源的定义"><span class="nav-number">2.</span> <span class="nav-text">一个源的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跨源网络访问"><span class="nav-number">3.</span> <span class="nav-text">跨源网络访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预检请求"><span class="nav-number">4.</span> <span class="nav-text">预检请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">5.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个源的定义"><span class="nav-number">2.</span> <span class="nav-text">一个源的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跨源网络访问"><span class="nav-number">3.</span> <span class="nav-text">跨源网络访问</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预检请求"><span class="nav-number">4.</span> <span class="nav-text">预检请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">5.</span> <span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文档"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
 
           </div>
