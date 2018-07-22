@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,Spring," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文链接 引言当运行一个静态代码分析工具或者IDE检查分析你的代码时，你可能遇到以下的关于你的@Autowired字段的警告。  Field injection is not recommended   这篇文章展示了在Spring中能够使用的不同类型的注入，以及每一种的推荐使用模式。">
+<meta name="keywords" content="Java,Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Field injection is not recommended">
+<meta property="og:url" content="https://blog.tuweiliang.com/2018/07/03/Field-injection-is-not-recommended/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="原文链接 引言当运行一个静态代码分析工具或者IDE检查分析你的代码时，你可能遇到以下的关于你的@Autowired字段的警告。  Field injection is not recommended   这篇文章展示了在Spring中能够使用的不同类型的注入，以及每一种的推荐使用模式。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/bdef7c44gy1fry8jz4lo1j20lz029dfs.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/bdef7c44gy1fry8kf3nmmj20m70opmza.jpg">
+<meta property="og:updated_time" content="2018-07-22T14:55:17.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Field injection is not recommended">
+<meta name="twitter:description" content="原文链接 引言当运行一个静态代码分析工具或者IDE检查分析你的代码时，你可能遇到以下的关于你的@Autowired字段的警告。  Field injection is not recommended   这篇文章展示了在Spring中能够使用的不同类型的注入，以及每一种的推荐使用模式。">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/bdef7c44gy1fry8jz4lo1j20lz029dfs.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.tuweiliang.com/2018/07/03/Field-injection-is-not-recommended/"/>
+
+
+
+
+
+  <title>Field injection is not recommended | Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.tuweiliang.com/2018/07/03/Field-injection-is-not-recommended/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="twl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/bdef7c44gy1fqj7ynuwn6j209q0egq5v.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Field injection is not recommended</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-03T15:32:38+08:00">
+                2018-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://blog.marcnuri.com/field-injection-is-not-recommended/" target="_blank" rel="noopener">原文链接</a></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>当运行一个静态代码分析工具或者IDE检查分析你的代码时，你可能遇到以下的关于你的@Autowired字段的警告。</p>
+<blockquote>
+<p>Field injection is not recommended</p>
+</blockquote>
+<p><img src="https://ws1.sinaimg.cn/large/bdef7c44gy1fry8jz4lo1j20lz029dfs.jpg" alt=""></p>
+<p>这篇文章展示了在Spring中能够使用的不同类型的注入，以及每一种的推荐使用模式。</p>
+<a id="more"></a>
+<h1 id="注入类型"><a href="#注入类型" class="headerlink" title="注入类型"></a>注入类型</h1><p>虽然现在的 spring framework (5.0.3) 文档只定义了两种主要的注入类型，实际上存在三种：</p>
+<ul>
+<li>基于构造函数的依赖注入</li>
+<li>基于 setter 的依赖注入</li>
+<li>基于字段的依赖注入</li>
+</ul>
+<p>最后一种就是静态代码检查工具所抱怨的，但是它的使用十分经常和广泛。<br>你甚至在 Spring 的引导可以看到这个注入方式，虽然文档里不推荐。</p>
+<p><img src="https://ws1.sinaimg.cn/large/bdef7c44gy1fry8kf3nmmj20m70opmza.jpg" alt=""></p>
+<h2 id="基于构造函数的依赖注入"><a href="#基于构造函数的依赖注入" class="headerlink" title="基于构造函数的依赖注入"></a>基于构造函数的依赖注入</h2><p>在基于构造函数的依赖注入中，类的构造函数被 @Autowired 注解并包括了被注入的不同数量的参数对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConstructorBasedInjection</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InjectedBean injectedBean;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConstructorBasedInjection</span><span class="params">(InjectedBean injectedBean)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.injectedBean = injectedBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>基于构造函数的依赖注入的主要有点就是你可以用final声明你的注入字段，它们会在类生成实例的过程中被创建。这对于被需要的依赖来说是便利的。</p>
+<h2 id="基于-setter-的依赖注入"><a href="#基于-setter-的依赖注入" class="headerlink" title="基于 setter 的依赖注入"></a>基于 setter 的依赖注入</h2><p>在基于 setter 的依赖注入中， setter 函数被 @Autowired 所注解。只要bean通过一个无参构造函数或者一个无参静态工厂函数被实例化， Spring 容器会调用这些 setter 函数从而注入 bean 的依赖。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConstructorBasedInjection</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> InjectedBean injectedBean;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setInjectedBean</span><span class="params">(InjectedBean injectedBean)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.injectedBean = injectedBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="基于字段的依赖注入"><a href="#基于字段的依赖注入" class="headerlink" title="基于字段的依赖注入"></a>基于字段的依赖注入</h2><p>在基于字段的依赖注入中，字段/属性被 @Autowired 所注解。只要类被创建实例了 Spring 容器将会 set 这些字段。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConstructorBasedInjection</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> InjectedBean injectedBean;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如你所见，这是最简洁的依赖注入方法，它避免了增加样板代码，并且没有为类声明一个构造函数的必要。代码看起来很不错，简洁整齐，但是正如代码检查工具已经提醒我们的，这种方法有一些缺点。</p>
+<h1 id="基于字段的依赖注入的缺点"><a href="#基于字段的依赖注入的缺点" class="headerlink" title="基于字段的依赖注入的缺点"></a>基于字段的依赖注入的缺点</h1><p>不允许声明final字段<br>如果声明了final/不变的字段，基于字段的依赖注入将不会工作。字段必须在类实例化的过程中创建。唯一一种声明 final 依赖的方法是基于构造函数的依赖注入。</p>
+<h2 id="有助于违反单一负责原则"><a href="#有助于违反单一负责原则" class="headerlink" title="有助于违反单一负责原则"></a>有助于违反单一负责原则</h2><p>如你所知，在面向对象的计算机编程中， SOLID 缩写定义了五个使你的代码便于理解，有弹性，可维护的设计原则。<br>SOLID 的 S 代表了单一责任原则，这意味着一个类应该只对软件应用的一个单一部分的功能负责，所有它的服务应该对它的责任精简的对齐。<br>通过基于字段的依赖注入，十分容易在你的类中拥有许多依赖，一切看起来很好。如果替代使用基于构造函数的依赖注入，当越来越多的依赖添加到你的类中，构造函数会变得越来越臃肿，代码开始变味，发送了有些东西是错误的信号。<br>拥有一个多于十个参数的构造函数是一个清晰的信号标明类有太多的合作者，这可能是一个好的时机去开始分离类变成小一点且更多的可维护的部分。<br>所以虽然基于字段的依赖注入没有直接对破坏单一负责原则负责，它帮助隐藏了代码应该简洁的信号。</p>
+<h2 id="与依赖注入容器紧密耦合"><a href="#与依赖注入容器紧密耦合" class="headerlink" title="与依赖注入容器紧密耦合"></a>与依赖注入容器紧密耦合</h2><p>使用基于字段的依赖注入的主要原因是避免 getter setter 的样板代码或者为你的类创建一个构造函数。最终这意味着这是唯一的方法，字段通过 spring 容器实例化类来安置，通过反射来注入它们，否则字段将会保持为空且你的代码将会变的被破坏/无用的。<br>依赖注入设计模式将类依赖关系的创建与类本身的创建分离，将此责任转移到类注入器，从而允许程序设计松散耦合并遵循单一责任和依赖倒置原则（再次 SOLID ），因此，通过自动装配其字段来实现类的自动装配的解耦最终无效因为与类注入器（在 Spring 的例子中）的耦合，使得该类在 Spring 容器外无用。<br>这意味这如果你想要在应用容器之外使用你的类，比如说单元测试，你必须强制使用 spring 容器去实例化你的类，除了反射之外没有其他的方法去设置自动装配的字段。</p>
+<h2 id="隐藏的依赖"><a href="#隐藏的依赖" class="headerlink" title="隐藏的依赖"></a>隐藏的依赖</h2><p>当使用一个依赖注入模式时，受影响的类需要通过使用一个公共接口清楚的暴露这些依赖，或者在构造函数里暴露需要的依赖，或者可选的 setter 方法。当使用基于字段的依赖注入时，类本质上在对外界隐藏它的依赖。</p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>我们已经看到了，无论何时，无论它看上去多优雅基于字段的依赖注入应该被禁止因为它的众多缺点。推荐的方法是使用基于构造函数的依赖注入和基于 setter 的依赖注入。前者推荐在需要依赖不能被修改或者保证他们不为空的时候使用，后者推荐需要可选依赖的时候使用</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/15/HTTP-CORS-Request-method-OPTIONS/" rel="next" title="HTTP CORS Request method OPTIONS">
+                <i class="fa fa-chevron-left"></i> HTTP CORS Request method OPTIONS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://ws1.sinaimg.cn/large/bdef7c44gy1fqj7ynuwn6j209q0egq5v.jpg"
+                alt="twl" />
+            
+              <p class="site-author-name" itemprop="name">twl</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注入类型"><span class="nav-number">2.</span> <span class="nav-text">注入类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于构造函数的依赖注入"><span class="nav-number">2.1.</span> <span class="nav-text">基于构造函数的依赖注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于-setter-的依赖注入"><span class="nav-number">2.2.</span> <span class="nav-text">基于 setter 的依赖注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于字段的依赖注入"><span class="nav-number">2.3.</span> <span class="nav-text">基于字段的依赖注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于字段的依赖注入的缺点"><span class="nav-number">3.</span> <span class="nav-text">基于字段的依赖注入的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有助于违反单一负责原则"><span class="nav-number">3.1.</span> <span class="nav-text">有助于违反单一负责原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与依赖注入容器紧密耦合"><span class="nav-number">3.2.</span> <span class="nav-text">与依赖注入容器紧密耦合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏的依赖"><span class="nav-number">3.3.</span> <span class="nav-text">隐藏的依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">twl</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

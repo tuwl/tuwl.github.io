@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.tuweiliang.com/2018/03/21/DenyHosts/">
+    <link itemprop="mainEntityOfPage" href="https://blog.tuweiliang.com/2018/04/18/DenyHosts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="twl">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/21/DenyHosts/" itemprop="url">关于使用DenyHosts阻止SSH暴力破解密码</a></h1>
+                <a class="post-title-link" href="/2018/04/18/DenyHosts/" itemprop="url">关于使用DenyHosts阻止SSH暴力破解密码</a></h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T20:11:49+08:00">
-                2018-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T21:19:32+08:00">
+                2018-04-18
               </time>
             
 
@@ -352,11 +352,161 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Debian/Ubuntu： </span></span><br><span class="line">$ sudo apt-get install denyhosts </span><br><span class="line"><span class="comment"># RedHat/CentOS </span></span><br><span class="line">$ yum install denyhosts </span><br><span class="line"><span class="comment"># Archlinux </span></span><br><span class="line">$ yaourt denyhosts </span><br><span class="line"><span class="comment"># Gentoo </span></span><br><span class="line">$ emerge -av denyhosts</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/21/DenyHosts/#more" rel="contents">
+            <a class="btn" href="/2018/04/18/DenyHosts/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.tuweiliang.com/2018/03/21/vue-bootstrap-datepicker-issue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="twl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/bdef7c44gy1fqj7ynuwn6j209q0egq5v.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/21/vue-bootstrap-datepicker-issue/" itemprop="url">Vue.js中使用v-model无法取到bootstrap-datepicker的值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T20:29:14+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/keep-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">keep learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>demo:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"dtp_input1"</span> <span class="attr">class</span>=<span class="string">"col-md-2 control-label"</span>&gt;</span>DateTime Picking<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group date form_datetime col-md-5"</span> <span class="attr">data-date</span>=<span class="string">"1979-09-16T05:25:07Z"</span></span></span><br><span class="line"><span class="tag">                 <span class="attr">data-date-format</span>=<span class="string">"dd MM yyyy - HH:ii p"</span> <span class="attr">data-link-field</span>=<span class="string">"dtp_input1"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">size</span>=<span class="string">"16"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">readonly</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-remove"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-th"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">id</span>=<span class="string">"dtp_input1"</span> <span class="attr">v-model</span>=<span class="string">"o.datetime"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>o.datetime无法与dtp_input1绑定</p>
+<hr>
+<p>在vue github的issues中找到了原因：</p>
+<blockquote>
+<p>yyx990803 commented on 17 Nov 2016<br>The fiddle isn’t working, but it’s most likely due to bootstrap-datepicker only triggering a jQuery change event instead of a real change event.</p>
+</blockquote>
+<p><a href="https://github.com/vuejs/vue/issues/4231" target="_blank" rel="noopener">https://github.com/vuejs/vue/issues/4231</a></p>
+
+          
         
       
     </div>
@@ -444,7 +594,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -466,7 +616,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
